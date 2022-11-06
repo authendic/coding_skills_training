@@ -29,7 +29,7 @@ for f in range(3, sqrt+1, 2)
     ...
 ```
 
-this code saving half time of calculating. and we can improve it more, by preventing  num whose value is multipled by 3 
+this code saving half of the  time in calculating. and we can improve it even more, by preventing nums whose value are multipled by 3 
 
 ```python
 if n < 2 or n == 4:

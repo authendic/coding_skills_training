@@ -12,8 +12,42 @@
 # >> 1
 import math
 
-
 def prime_candidates(from_include, to_include):
+    if from_include <= 3:
+        yield 2
+        yield 3
+        from_include = 5
+
+    if from_include % 6 <=1:
+        beg = from_include - from_include % 6 + 1
+        if beg < to_include:
+            yield beg
+        else:
+            return
+    else:
+        beg = from_include - from_include % 6 + 5
+
+    lastend = 0
+    if to_include % 6 == 0:
+        lastend = to_include - 1
+        # adjust end to 6n+1
+        end = lastend - 4
+    elif to_include % 6 == 5:
+        lastend = to_include
+        # adjust end to 6n+1
+        end = lastend - 4
+    else:
+        # adjust end to 6n+1
+        end = to_include - to_include % 6 + 1
+    while beg <= end:
+        yield beg
+        yield beg + 2
+        beg += 6
+    if lastend:
+        yield lastend
+
+
+def prime_candidates2(from_include, to_include):
     # prime_candidates designed for large then 7,
     # so if from_include less then 7,
     # the function will allways yield 2 3 5.
@@ -96,6 +130,7 @@ if __name__ == "__main__":
     for c in prime_candidates(10000330202725801, 10000330202725801+100):
         if isprime(c):
             print(c)
+    print(list(prime_candidates(100, 200)))
 
 #     import sympy
 #     %timeit -n 10 sympy.isprime(10000330202725901)
