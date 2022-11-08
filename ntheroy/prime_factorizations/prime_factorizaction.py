@@ -104,8 +104,8 @@ def isprime(n):
             return n == p
     return True
 
-
-# >> 1
+## Project Euler #5: Smallest multiple
+# >> #5
 
 if __name__ == "__main__":
     print(prime_factors_v2(20))
